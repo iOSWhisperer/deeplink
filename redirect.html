@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirecting...</title>
+  <script>
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    if (/android/i.test(userAgent)) {
+      // Try opening the Android app
+      window.location.href = "intent://inquirydetail/123#Intent;scheme=https;package=com.trukker.fms;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.trukker.fms;end";
+    } else if (/iPhone|iPad|iPod/.test(userAgent)) {
+      // Try Universal Link
+      window.location.href = "https://loadboard.qa.trukker.com/liveloads/123";
+
+      // Fallback to App Store after delay
+      setTimeout(() => {
+        window.location.href = "https://apps.apple.com/us/app/trukker-partner/id1624013412";
+      }, 1500);
+    } else {
+      window.location.href = "https://loadboard.qa.trukker.com";
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting to app...</p>
+</body>
+</html>
